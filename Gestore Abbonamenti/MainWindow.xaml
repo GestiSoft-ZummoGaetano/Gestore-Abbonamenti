@@ -1,0 +1,47 @@
+﻿<Window x:Class="Gestore_Abbonamenti.MainWindow"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gestore_Abbonamenti"
+        mc:Ignorable="d"
+        Icon="/GestioneAbbonamenti.png"
+        Title="GESTORE ABBONAMENTI" 
+        MaxHeight="800" MinHeight="800"
+        MaxWidth="1800" Width="1400"  MinWidth="1400" 
+        Closed="Window_Closed" WindowStartupLocation="CenterScreen">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="6*" />
+            <RowDefinition Height="90*" />
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" Background="#2C3036" >
+            <Image Source="Resource/Icons/Gestioneabbonamenti.png" HorizontalAlignment="Left" Margin="5,0,0,0"/>
+            <TextBlock Text="GESTIONE ABBONAMENTI" Foreground="White" VerticalAlignment="Center" Margin="55,0,0,0" FontSize="23"/>
+            <Button Style="{StaticResource CustomButtonStyle}"  Margin="0,0,20,0" Click="Info_Click" HorizontalAlignment="Right" ToolTip="VISUALIZZA GUIDA PDF">
+                <StackPanel>
+                    <Image Source="/Resource/Icons/InfoPoint.png" Width="40"/>
+                </StackPanel>
+            </Button>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <Grid.ColumnDefinitions>
+                <ColumnDefinition Width="308*" />
+                <ColumnDefinition Width="281*" />
+                <ColumnDefinition Width="611*"/>
+            </Grid.ColumnDefinitions>
+
+            <Grid Grid.Column="0" Background="#f2f2f2" Grid.ColumnSpan="2" Margin="0,0,281,0" >
+                <StackPanel Grid.Column="0" Background="#2C3036" HorizontalAlignment="Stretch" VerticalAlignment="Stretch">
+                    <ToggleButton  Style="{StaticResource MenuButtonStyle}" Content="pack:/Resource/Icons/Utenti.png" Tag="LISTA ANAGRAFICA" Margin="0,10,0,0" Click="ToggleButton_Click"/>
+                    <ToggleButton  Style="{StaticResource MenuButtonStyle}" Content="pack:/Resource/Icons/Riepilogo.png"  Tag="RIEPILOGO PRIMO SEMESTRE" Margin="0,10,0,0" Click="ToggleButton_Click"/>
+                    <ToggleButton  Style="{StaticResource MenuButtonStyle}" Content="pack:/Resource/Icons/Riepilogo.png"  Tag="RIEPILOGO SECONDO SEMESTRE" Margin="0,10,0,0" Click="ToggleButton_Click"/>
+                    <ToggleButton  Style="{StaticResource MenuButtonStyle}" Content="pack:/Resource/Icons/Impostazioni.png" Tag="SCUOLE" Click="ToggleButton_Click" Cursor="Hand"/>
+                </StackPanel>
+            </Grid>
+            <Frame x:Name="frame" Background="White" Grid.Column="1" NavigationUIVisibility="Hidden" Grid.ColumnSpan="2" />
+        </Grid>
+    </Grid>
+</Window>

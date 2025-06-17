@@ -1,0 +1,49 @@
+﻿<Window x:Class="Gestore_Abbonamenti.View.ShowDialog.ShowDialogView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gestore_Abbonamenti.View.ShowDialog"
+        xmlns:Converters="clr-namespace:Gestore_Abbonamenti.Converters"
+        mc:Ignorable="d"
+        WindowStartupLocation="CenterScreen"
+        ResizeMode="NoResize"
+        WindowStyle="None"
+        Title="ShowDialog" Height="450" Width="800">
+    <Border CornerRadius="15" Background="WhiteSmoke" BorderBrush="Black" BorderThickness="0.5">
+        <Grid>
+            <Grid.RowDefinitions>
+                <RowDefinition Height="50"/>
+                <RowDefinition Height="4*"/>
+                <RowDefinition Height="*"/>
+            </Grid.RowDefinitions>
+            <Border Grid.Row="0" CornerRadius="15,15,0,0" Background="#FF3F4852">
+                <StackPanel Orientation="Horizontal" VerticalAlignment="Center" Margin="10,0,0,0">
+                    <Image Source="{Binding ImageSource}" Width="45" Height="40" Margin="0,0,5,0" VerticalAlignment="Center"/>
+                    <TextBlock Text="{Binding Title}" VerticalAlignment="Center" Margin="0,5,0,0" Foreground="White" FontStyle="Normal" FontSize="25" FontFamily="Bahnschrift SemiBold SemiCondensed"/>
+                </StackPanel>
+            </Border>
+            <Grid Grid.Row="1">
+                <ScrollViewer VerticalScrollBarVisibility="Auto" HorizontalScrollBarVisibility="Disabled">
+                    <TextBlock Text="{Binding TextMessage}" VerticalAlignment="Center" HorizontalAlignment="Center" FontStyle="Normal" FontSize="25" Margin="10" TextWrapping="Wrap" FontFamily="Bahnschrift SemiBold SemiCondensed"/>
+                </ScrollViewer>
+            </Grid>
+            <Grid Grid.Row="2">
+                <StackPanel Orientation="Horizontal">
+                    <Button Style="{StaticResource BlueButton}" Content="OK" Width="100" HorizontalAlignment="Left" Margin="20,0,0,10"
+                        Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Click="Ok_Click"
+                            Visibility="{Binding OkVisibility, Converter={Converters:BoolToVisibilityConverter FalseValue=Collapsed, TrueValue=Visible}}"/>
+                    <Button Style="{StaticResource BlueButton}" Content="CANCEL" Width="100" HorizontalAlignment="Left" Margin="20,0,0,10"
+                            Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Click="Cancel_Click"
+                            Visibility="{Binding CancelVisibility, Converter={Converters:BoolToVisibilityConverter FalseValue=Collapsed, TrueValue=Visible}}"/>
+                    <Button Style="{StaticResource BlueButton}" Content="SI" Width="70" HorizontalAlignment="Left" Margin="20,0,0,10"
+                            Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Click="Yes_Click"
+                            Visibility="{Binding YesVisibility, Converter={Converters:BoolToVisibilityConverter FalseValue=Collapsed, TrueValue=Visible}}"/>
+                    <Button Style="{StaticResource BlueButton}" Content="NO" Width="70" HorizontalAlignment="Left" Margin="20,0,0,10"
+                            Command="{Binding SaveCommand}" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" Click="No_Click"
+                            Visibility="{Binding NoVisibility, Converter={Converters:BoolToVisibilityConverter FalseValue=Collapsed, TrueValue=Visible}}"/>
+                </StackPanel>
+            </Grid>
+        </Grid>
+    </Border>
+</Window>

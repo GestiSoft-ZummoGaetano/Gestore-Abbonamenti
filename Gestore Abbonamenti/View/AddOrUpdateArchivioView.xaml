@@ -1,0 +1,409 @@
+﻿<Window x:Class="Gestore_Abbonamenti.View.AddOrUpdateArchivioView"
+        xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation"
+        xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+        xmlns:d="http://schemas.microsoft.com/expression/blend/2008"
+        xmlns:mc="http://schemas.openxmlformats.org/markup-compatibility/2006"
+        xmlns:local="clr-namespace:Gestore_Abbonamenti.View" xmlns:Converters="clr-namespace:Gestore_Abbonamenti.Converters" 
+        xmlns:i="http://schemas.microsoft.com/xaml/behaviors"
+        xmlns:ei="http://schemas.microsoft.com/xaml/behaviors" 
+        mc:Ignorable="d"
+        Language="it-IT"
+        WindowStartupLocation="CenterScreen"
+        Title="AddOrUpdateArchivioView" MaxHeight="750" MaxWidth="930" MinHeight="750" MinWidth="930">
+    <Grid>
+        <Grid.RowDefinitions>
+            <RowDefinition Height="*"/>
+            <RowDefinition Height="80"/>
+        </Grid.RowDefinitions>
+
+        <Grid Grid.Row="0" VerticalAlignment="Top" Margin="0,30,0,0">
+            <TabControl Style="{StaticResource TabControlStyle }" SelectedIndex="{Binding SelectedTab}"
+                    HorizontalAlignment="Left" Width="900"  Margin="10,0,20,0">
+                <TabItem Style="{StaticResource TabItemStyle}" Header="ANAGRAFICA GENITORE" Margin="10,0,-20,0" Width="auto">
+                    <StackPanel Orientation="Vertical" Width="800" Height="450" Margin="0,50,0,0">
+                        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Left">
+                            <StackPanel>
+                                <TextBlock TextAlignment="Center" Text="COGNOME" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30" Margin="0,0,0,0"
+                                Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Genitore.Cognome}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="NOME" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30" Margin="0,0,0,0"
+                                Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Genitore.Nome}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="DATA DI NASCITA *" Margin="0,0,0,5"/>
+                                <DatePicker Style="{StaticResource CustomDatePickerStyle}" Width="150" Height="30" SelectedDate="{Binding Genitore.DataNascita}" Language="it-IT" />
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="SESSO *" Margin="0,0,0,5"/>
+                                <ComboBox Style="{StaticResource CustomComboBoxStyle}" Width="120" Height="30" Text="{Binding Genitore.Sesso}">
+                                    <ComboBoxItem Content="MASCHIO" />
+                                    <ComboBoxItem Content="FEMMINA" />
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Left">
+                            <StackPanel>
+                                <TextBlock TextAlignment="Center" Text="LUOGO DI NASCITA" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30"
+                                        Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Genitore.LuogoNascita}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="CODICE FISCALE" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30" MaxLength="16"
+                                        Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Genitore.CodiceFiscale}"/>
+                            </StackPanel>
+                            <StackPanel Margin="5,20,0,0">
+                                <Button Style="{StaticResource GreyButton}" Width="100" Height="30" FontSize="15" Content="CALCOLA" Command="{Binding CFCommand}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10,70,0,0" HorizontalAlignment="Left">
+                            <StackPanel>
+                                <TextBlock TextAlignment="Center" Text="VIA (INDIRIZZO)" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30"
+                                    Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Genitore.Indirizzo}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="N° CIVICO" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="30"
+                                    Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Genitore.NCivico}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="CAP" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="30"
+                                    Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Genitore.Cap}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="LOCALITA'" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30"
+                                    Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Genitore.Localita}"/>
+                            </StackPanel>
+                        </StackPanel>
+                        <StackPanel Orientation="Horizontal" Margin="10,30,50,0" HorizontalAlignment="Left">
+                            <StackPanel>
+                                <TextBlock TextAlignment="Center" Text="IBAN" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="250" Height="30" MaxLength="27" TextAlignment="Center"
+                                Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Genitore.Iban}"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem Style="{StaticResource TabItemStyle}" Header="ANAGRAFICA ALUNNO PENDOLARE" Margin="10,0,-20,0" Width="auto" IsEnabled="{Binding EnableAlunno}">
+                    <StackPanel Orientation="Vertical" Width="800" Height="487" VerticalAlignment="Top" Margin="0,50,0,0">
+                        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Left">
+                            <StackPanel>
+                                <TextBlock TextAlignment="Center" Text="COGNOME" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30" Margin="0,0,0,0"
+                                    Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Figlio.Cognome}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="NOME" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30" Margin="0,0,0,0"
+                                    Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Figlio.Nome}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="DATA DI NASCITA *" Margin="0,0,0,5"/>
+                                <DatePicker Style="{StaticResource CustomDatePickerStyle}" Width="150" Height="30" SelectedDate="{Binding Figlio.DataNascita}" Language="it-IT"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="SESSO *" Margin="0,0,0,5"/>
+                                <ComboBox Style="{StaticResource CustomComboBoxStyle}" Width="120" Height="30" Text="{Binding Figlio.Sesso}" IsEditable="False">
+                                    <ComboBoxItem Content="MASCHIO"/>
+                                    <ComboBoxItem Content="FEMMINA" />
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Left">
+                            <StackPanel>
+                                <TextBlock TextAlignment="Center" Text="LUOGO DI NASCITA" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30"
+                        Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Figlio.LuogoNascita}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="VIA (INDIRIZZO)" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30"
+                        Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Figlio.Indirizzo}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="ISTITUTO SCOLASTICO" Margin="0,0,0,5"/>
+                                <ComboBox x:Name="SearchListIstituto" HorizontalAlignment="Left" VerticalAlignment="Center" Width="340" Height="30" IsEditable="True" DisplayMemberPath="DisplayMember" KeyUp ="SearchList_KeyUp" 
+                                    Style="{StaticResource CustomComboBoxStyle}" SelectedItem="{Binding Figlio.Scuola}" Text="{Binding SearchTextIstituto}" SelectedIndex="{Binding indexScuola}" ItemsSource="{Binding FilterListScuole}"
+                                          IsTextSearchEnabled ="False">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="KeyUp">
+                                            <ei:InvokeCommandAction Command="{Binding SearchIstitutoCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ComboBox>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,30,20,0" HorizontalAlignment="Right">
+                            <StackPanel>
+                                <TextBlock TextAlignment="Center" Text="FREQUENTA" Margin="0,0,0,5"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,-5,20,0">
+                                <ToggleButton Style="{StaticResource CustomToggleButtonStyle}" IsChecked="{Binding Figlio.Frequenza}" HorizontalAlignment="Right" ToolTip="ABILITA / DISABILITA FREQUENZA"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10,10,0,0" HorizontalAlignment="Left">
+                            <Button Style="{StaticResource GreyButton}" Command="{Binding AddFiglioCommand}" Content="AGGIUNGI" Width="150" Height="40" ToolTip="AGGIUNGI ALUNNO"
+                                    Visibility="{Binding AddVisibility, Converter={Converters:BoolToVisibilityConverter FalseValue=Collapsed, TrueValue=Visible}}"/>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="10,35,0,0" HorizontalAlignment="Left">
+                            <DataGrid Style="{StaticResource CustomDataGridStyle}" Width="790" MaxHeight="208" MinHeight="150"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                                    ItemsSource="{Binding ListFigli}" SelectedItem="{Binding RowFiglio}" GridLinesVisibility="All" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                <DataGrid.Columns>
+                                    <DataGridTemplateColumn  Width="50">
+                                        <DataGridTemplateColumn.CellStyle>
+                                            <Style TargetType="DataGridCell">
+                                                <Setter Property="MinHeight" Value="40"/>
+                                                <Setter Property="VerticalAlignment" Value="Center"/>
+                                            </Style>
+                                        </DataGridTemplateColumn.CellStyle>
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Ellipse Width="15" Height="15" Fill="{Binding FillPrenotationState}"  HorizontalAlignment="Center"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+
+                                    <DataGridTemplateColumn Header="MODIFICA">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Margin="0" Style="{StaticResource CustomButtonStyle}" Tag="../Resource/Icons/Modifica.png"
+                                                    Command="{Binding DataContext.UpdateFiglioCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"
+                                                    CommandParameter="{Binding}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Binding="{Binding Cognome}" Header="COGNOME" Width="150">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Nome}" Header="NOME" Width="150">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding DataNascita, StringFormat={}{0:dd/MM/yyyy}}" Header="DATA NASCITA" Width="200">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Sesso}" Header="SESSO" Width="160">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Language" Value="it-IT" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding LuogoNascita}" Header="LUOGO DI NASCITA" Width="160">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Language" Value="it-IT" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Indirizzo}" Header="VIA (INDIRIZZO)" Width="160">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Language" Value="it-IT" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Scuola.DisplayMember}" Header="ISTITUTOSCOLASTICO" Width="250">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Language" Value="it-IT" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+
+                <TabItem Style="{StaticResource TabItemStyle}" Header="CEDOLE MENSILI" Width="auto" VerticalAlignment="Stretch" IsEnabled="{Binding EnableCedola}">
+                    <StackPanel Orientation="Vertical" Width="800" Height="529" VerticalAlignment="Top" Margin="0,50,0,0">
+                        <StackPanel Orientation="Horizontal" Margin="10" HorizontalAlignment="Left">
+                            <StackPanel>
+                                <TextBlock TextAlignment="Center" Text="FIGLIO" Margin="0,0,0,5"/>
+                                <ComboBox Style="{StaticResource CustomComboBoxStyle}" Width="150" Height="30" DisplayMemberPath="Nome"
+                                      ItemsSource="{Binding ListComboFigli}" SelectedItem="{Binding ComboFiglio, Mode=TwoWay}">
+                                    <i:Interaction.Triggers>
+                                        <i:EventTrigger EventName="SelectionChanged">
+                                            <ei:InvokeCommandAction Command="{Binding SelectionChangedCommand}"/>
+                                        </i:EventTrigger>
+                                    </i:Interaction.Triggers>
+                                </ComboBox>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="MESE *" Margin="0,0,0,5"/>
+                                <ComboBox Style="{StaticResource CustomComboBoxStyle}" Width="150" Height="30" 
+                                      ItemsSource="{Binding ListMesi}" SelectedItem="{Binding Cedola.Mese}"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="N° CEDOLA ABBONAMENTO" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30" Margin="0,0,0,0"
+                                        Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Cedola.NCedola}"/>
+                            </StackPanel>
+                            <StackPanel Margin="20,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="DATA CEDOLA *" Margin="0,0,0,5"/>
+                                <DatePicker Style="{StaticResource CustomDatePickerStyle}" Language="it-IT" SelectedDate="{Binding Cedola.DataCedola}" Width="150" Height="30"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,20,20,0" HorizontalAlignment="Left">
+                            <StackPanel Margin="0,0,0,0" HorizontalAlignment="Center">
+                                <TextBlock TextAlignment="Center" Text="IMPORTO (€)" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="200" Height="30" Margin="10,0,0,0"
+                                    Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Cedola.Importo, StringFormat={}{0:F2}}" Language="it-IT" />
+                            </StackPanel>
+
+                            <StackPanel Margin="20,0,20,0" HorizontalAlignment="Center">
+                                <TextBlock TextAlignment="Center" Text="% RIDUZIONE" Margin="0,0,0,5"/>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="100" Height="30" Margin="10,0,0,0"
+                                            Style="{StaticResource CustomTextBoxStyle}" Text="{Binding PercentualePagamento, StringFormat={}{0:F2}}" TextAlignment="Center"/>
+                            </StackPanel>
+
+                            <StackPanel Orientation="Horizontal" Margin="20,15,20,0" HorizontalAlignment="Right">
+                                <Button Style="{StaticResource GreyButton}" Command="{Binding AddCedolaCommand}" Content="AGGIUNGI" Width="150" Height="40" ToolTip="AGGIUNGI CEDOLA"
+                                        Visibility="{Binding AddVisibility, Converter={Converters:BoolToVisibilityConverter FalseValue=Collapsed, TrueValue=Visible}}"/>
+                            </StackPanel>
+                        </StackPanel>
+
+                        <StackPanel HorizontalAlignment="Left" Margin="0,40,0,0">
+                            <DataGrid Style="{StaticResource CustomDataGridStyle}" Width="750" MinHeight="200"
+                                  ItemsSource="{Binding ListCedole}" SelectedItem="{Binding RowCedola}" GridLinesVisibility="All" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
+                                <DataGrid.Columns>
+
+                                    <DataGridTemplateColumn Header="MODIFICA">
+                                        <DataGridTemplateColumn.CellTemplate>
+                                            <DataTemplate>
+                                                <Button Margin="0" Style="{StaticResource CustomButtonStyle}" Tag="../Resource/Icons/Modifica.png"
+                                                    Command="{Binding DataContext.UpdateCedolaCommand, RelativeSource={RelativeSource AncestorType={x:Type DataGrid}}}"/>
+                                            </DataTemplate>
+                                        </DataGridTemplateColumn.CellTemplate>
+                                    </DataGridTemplateColumn>
+                                    <DataGridTextColumn Binding="{Binding Mese}" Header="MESE" Width="170">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding NCedola}" Header="N° CEDOLA ABBONAMENTO">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding DataCedola, StringFormat={}{0:dd/MM/yyyy}}" Header="DATA CEDOLA" Width="200">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding Importo,  StringFormat='€ {0:F2}'}" Header="IMPORTO" Width="160">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Language" Value="it-IT" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding PercentualeRiduzione,  StringFormat={}{0:F2} %}" Header="RIDUZIONE" Width="160">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Language" Value="it-IT" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                    <DataGridTextColumn Binding="{Binding ImportoRidotto,  StringFormat='€ {0:F2}'}" Header="IMPORTO RIDOTTO" Width="160">
+                                        <DataGridTextColumn.ElementStyle>
+                                            <Style TargetType="TextBlock">
+                                                <Setter Property="TextAlignment" Value="Center" />
+                                                <Setter Property="VerticalAlignment" Value="Center" />
+                                                <Setter Property="Language" Value="it-IT" />
+                                            </Style>
+                                        </DataGridTextColumn.ElementStyle>
+                                    </DataGridTextColumn>
+                                </DataGrid.Columns>
+                            </DataGrid>
+                        </StackPanel>
+
+                        <StackPanel Orientation="Horizontal" Margin="0,50,40,0" Width="830">
+                            <StackPanel>
+                                <TextBlock TextAlignment="Center" Text="TOTALE " Margin="0,7,0,0"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBox HorizontalAlignment="Left" VerticalAlignment="Center" Width="150" Height="30" Margin="10,0,0,0" IsReadOnly="True"
+                                    Style="{StaticResource CustomTextBoxStyle}" Text="{Binding Totale,  StringFormat='€ {0:F2}'}"  Language="it-IT"/>
+                            </StackPanel>
+
+                            <StackPanel Margin="320,0,0,0">
+                                <TextBlock TextAlignment="Center" Text="TOTALE RIDOTTO" Margin="0,7,0,0"/>
+                            </StackPanel>
+                            <StackPanel>
+                                <TextBox Width="128" Height="30" Margin="10,0,0,0" IsReadOnly="True"
+                                        Style="{StaticResource CustomTextBoxStyle}" Text="{Binding TotaleRidotto, StringFormat='€ {0:F2}'}"  Language="it-IT"/>
+                            </StackPanel>
+                        </StackPanel>
+                    </StackPanel>
+                </TabItem>
+            </TabControl>
+        </Grid>
+
+        <Grid Grid.Row="1">
+            <StackPanel Orientation="Horizontal" HorizontalAlignment="Right">
+                <Button Style="{StaticResource GreyButton}" Content="CANCELLA" Command="{Binding CancelCommand}" HorizontalAlignment="Right" CommandParameter="{Binding RelativeSource={RelativeSource AncestorType=Window}}" ToolTip="CHIUDI SCHEDA"/>
+                <Button Style="{StaticResource BlueButton}" Content="AVANTI" Command="{Binding AvantiCommand}" HorizontalAlignment="Right" ToolTip="VAI AL PROSSIMO TAB"
+                    Visibility="{Binding SalvaVisibility, Converter={Converters:BoolToVisibilityConverter FalseValue=Collapsed, TrueValue=Visible}}"/>
+                <Button Style="{StaticResource BlueButton}" Content="SALVA" Command="{Binding AddOrUpdateCommand}" HorizontalAlignment="Right" ToolTip="SALVA TUTTO"
+                    Visibility="{Binding SalvaVisibility, Converter={Converters:BoolToVisibilityConverter FalseValue=Visible, TrueValue=Collapsed}}"/>
+
+            </StackPanel>
+            <StackPanel HorizontalAlignment="Left" VerticalAlignment="Center" Margin="15,0,0,0">
+                <Button Style="{StaticResource BlueButton}" Content="NUOVO" Command="{Binding NuovoCommand}"  HorizontalAlignment="Left" ToolTip="AGGIUNGI NUOVO"
+                    Visibility="{Binding SalvaVisibility, Converter={Converters:BoolToVisibilityConverter FalseValue=Visible, TrueValue=Collapsed}}"/>
+            </StackPanel>
+        </Grid>
+    </Grid>
+</Window>

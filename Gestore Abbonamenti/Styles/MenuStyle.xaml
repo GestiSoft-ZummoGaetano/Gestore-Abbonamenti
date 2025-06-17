@@ -1,0 +1,110 @@
+﻿<ResourceDictionary xmlns:x="http://schemas.microsoft.com/winfx/2006/xaml"
+                    xmlns="http://schemas.microsoft.com/winfx/2006/xaml/presentation">
+
+    <Style TargetType="ToggleButton" x:Key="MenuButtonStyle">
+        <Setter Property="Background" Value="Transparent"/>
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="HorizontalContentAlignment" Value="Left"/>
+        <Setter Property="Padding" Value="10,5"/>
+        <Setter Property="Height" Value="40"/>
+        <Setter Property="Cursor" Value="Hand"/>
+
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="ToggleButton">
+                    <Grid>
+                        <Grid.RenderTransform>
+                            <ScaleTransform x:Name="scaleTransform" ScaleX="1" ScaleY="1" />
+                        </Grid.RenderTransform>
+
+                        <Rectangle x:Name="BackgroundRectangle" Fill="{TemplateBinding Background}" RadiusX="5" RadiusY="5"/>
+
+                        <StackPanel Orientation="Horizontal" HorizontalAlignment="Left">
+                            <Image Source="{Binding RelativeSource={RelativeSource TemplatedParent}, Path=Content}" Width="25" Height="25" Margin="5,0"/>
+                            <TextBlock Text="{TemplateBinding Tag}" FontSize="15" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                        </StackPanel>
+                    </Grid>
+
+                    <ControlTemplate.Triggers>
+                        <!-- Hover Effect -->
+                        <EventTrigger RoutedEvent="ToggleButton.MouseEnter">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="scaleTransform" 
+                                                 Storyboard.TargetProperty="ScaleX" 
+                                                 To="1.1" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="scaleTransform" 
+                                                 Storyboard.TargetProperty="ScaleY" 
+                                                 To="1.1" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+                        <EventTrigger RoutedEvent="ToggleButton.MouseLeave">
+                            <BeginStoryboard>
+                                <Storyboard>
+                                    <DoubleAnimation Storyboard.TargetName="scaleTransform" 
+                                                 Storyboard.TargetProperty="ScaleX" 
+                                                 To="1" Duration="0:0:0.1"/>
+                                    <DoubleAnimation Storyboard.TargetName="scaleTransform" 
+                                                 Storyboard.TargetProperty="ScaleY" 
+                                                 To="1" Duration="0:0:0.1"/>
+                                </Storyboard>
+                            </BeginStoryboard>
+                        </EventTrigger>
+
+                        <!-- Se il pulsante è selezionato -->
+                        <Trigger Property="IsChecked" Value="True">
+                            <Setter TargetName="BackgroundRectangle" Property="Fill" Value="Gray"/>
+                            <Setter Property="Foreground" Value="Black"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+
+    <!-- Stile per il pannello del menu Expander -->
+    <Style TargetType="Expander" x:Key="MenuExpanderStyle">
+        <Setter Property="Foreground" Value="White"/>
+        <Setter Property="Background" Value="#333840"/>
+        <Setter Property="FontWeight" Value="Bold"/>
+        <Setter Property="Padding" Value="5"/>
+        <Setter Property="Cursor" Value="Hand"/>
+        <Setter Property="Template">
+            <Setter.Value>
+                <ControlTemplate TargetType="Expander">
+                    <StackPanel Background="{TemplateBinding Background}">
+                        <!-- ToggleButton per il Header dell'Expander con altezza fissa -->
+                        <ToggleButton Foreground="{TemplateBinding Foreground}"
+                                      Background="{TemplateBinding Background}"
+                                      FontSize="12"
+                                      Padding="0"
+                                      Height="40" 
+                                      Margin="0,0,8,0"
+                                      
+                            BorderBrush="Transparent"
+                            HorizontalContentAlignment="Left"
+                                      IsChecked="{Binding Path=IsExpanded, RelativeSource={RelativeSource TemplatedParent}}">
+                            <StackPanel Orientation="Horizontal">
+                                <Image Source="{Binding Tag, RelativeSource={RelativeSource TemplatedParent}}" Width="25" Height="25" Margin="5,0"/>
+                                <TextBlock Text="{TemplateBinding Header}" FontSize="13" VerticalAlignment="Center" Margin="10,0,0,0"/>
+                            </StackPanel>
+                        </ToggleButton>
+
+                        <!-- ContentPresenter per il contenuto espandibile -->
+                        <ContentPresenter x:Name="Content"
+                                          Visibility="Collapsed"
+                                          ContentSource="Content"
+                                          Margin="5,0,0,0"/>
+                    </StackPanel>
+                    <ControlTemplate.Triggers>
+                        <!-- Trigger per mostrare il contenuto quando IsExpanded è True -->
+                        <Trigger Property="IsExpanded" Value="True">
+                            <Setter TargetName="Content" Property="Visibility" Value="Visible"/>
+                        </Trigger>
+                    </ControlTemplate.Triggers>
+                </ControlTemplate>
+            </Setter.Value>
+        </Setter>
+    </Style>
+</ResourceDictionary>

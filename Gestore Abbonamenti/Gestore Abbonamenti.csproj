@@ -1,0 +1,94 @@
+﻿<Project Sdk="Microsoft.NET.Sdk">
+
+  <PropertyGroup>
+    <OutputType>WinExe</OutputType>
+    <TargetFramework>net8.0-windows</TargetFramework>
+    <RootNamespace>Gestore_Abbonamenti</RootNamespace>
+    <Nullable>enable</Nullable>
+    <ImplicitUsings>enable</ImplicitUsings>
+    <UseWPF>true</UseWPF>
+    <ApplicationIcon>GestioneAbbonamenti.ico</ApplicationIcon>
+    <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
+    <Version>1.1.0</Version>
+    <!-- Versione del package / assembly -->
+    <FileVersion>1.1.0.7</FileVersion>
+    <!-- Versione del file eseguibile -->
+    <AssemblyVersion>1.1.0.7</AssemblyVersion>
+    
+  </PropertyGroup>
+
+  <ItemGroup>
+    <None Remove="App.xaml~RF8f3574f2.TMP" />
+    <None Remove="GestioneAbbonamenti.png" />
+    <None Remove="Resource\Icons\Aggiungi.png" />
+    <None Remove="Resource\Icons\Caution.png" />
+    <None Remove="Resource\Icons\Cerca.png" />
+    <None Remove="Resource\Icons\Delete.png" />
+    <None Remove="Resource\Icons\Error.png" />
+    <None Remove="Resource\Icons\GestioneAbbonamenti.ico" />
+    <None Remove="Resource\Icons\GestioneAbbonamenti.png" />
+    <None Remove="Resource\Icons\Impostazioni.png" />
+    <None Remove="Resource\Icons\Info.png" />
+    <None Remove="Resource\Icons\InfoPoint.png" />
+    <None Remove="Resource\Icons\Modifica.png" />
+    <None Remove="Resource\Icons\Riepilogo.png" />
+    <None Remove="Resource\Icons\Utenti.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Content Include="GestioneAbbonamenti.ico" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="GestioneAbbonamenti.png" />
+    <Resource Include="Resource\Icons\Aggiungi.png" />
+    <Resource Include="Resource\Icons\GestioneAbbonamenti.ico" />
+    <Resource Include="Resource\Icons\GestioneAbbonamenti.png" />
+    <Resource Include="Resource\Icons\Impostazioni.png" />
+    <Resource Include="Resource\Icons\Info.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <PackageReference Include="Autofac" Version="8.1.1" />
+    <PackageReference Include="itext7" Version="9.1.0" />
+    <PackageReference Include="Microsoft.EntityFrameworkCore.Design" Version="8.0.10">
+      <PrivateAssets>all</PrivateAssets>
+      <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
+    </PackageReference>
+    <PackageReference Include="Microsoft.Xaml.Behaviors.Wpf" Version="1.1.135" />
+    <PackageReference Include="PdfSharpCore" Version="1.3.65" />
+    <PackageReference Include="Prism.Core" Version="9.0.537" />
+    <PackageReference Include="System.Management" Version="9.0.2" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <ProjectReference Include="..\GestoreAbbonamenti.Common\GestoreAbbonamenti.Common.csproj" />
+    <ProjectReference Include="..\GestoreAbbonamenti.Data\GestoreAbbonamenti.Data.csproj" />
+    <ProjectReference Include="..\GestoreAbbonamenti.Logic\GestoreAbbonamenti.Logic.csproj" />
+    <ProjectReference Include="..\GestoreAbbonamenti.Model\GestoreAbbonamenti.Model.csproj" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <Resource Include="Resource\Icons\Caution.png" />
+    <Resource Include="Resource\Icons\Cerca.png" />
+    <Resource Include="Resource\Icons\Delete.png" />
+    <Resource Include="Resource\Icons\Error.png" />
+    <Resource Include="Resource\Icons\InfoPoint.png" />
+    <Resource Include="Resource\Icons\Modifica.png" />
+    <Resource Include="Resource\Icons\Riepilogo.png" />
+    <Resource Include="Resource\Icons\Utenti.png" />
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="appsettings.json">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+  <ItemGroup>
+    <None Update="*.pdf">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
+</Project>
