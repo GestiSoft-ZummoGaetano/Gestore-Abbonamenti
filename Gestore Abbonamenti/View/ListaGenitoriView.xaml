@@ -60,7 +60,7 @@
                         </DataTemplate>
                     </DataGridTemplateColumn.CellTemplate>
                 </DataGridTemplateColumn>
-                <DataGridTextColumn Binding="{Binding Nome}" Header="NOME" Width="187">
+                <DataGridTextColumn Binding="{Binding Cognome}" Header="COGNOME" Width="187">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextAlignment" Value="Center" />
@@ -68,7 +68,7 @@
                         </Style>
                     </DataGridTextColumn.ElementStyle>
                 </DataGridTextColumn>
-                <DataGridTextColumn Binding="{Binding Cognome}" Header="COGNOME" Width="187">
+                <DataGridTextColumn Binding="{Binding Nome}" Header="NOME" Width="187">
                     <DataGridTextColumn.ElementStyle>
                         <Style TargetType="TextBlock">
                             <Setter Property="TextAlignment" Value="Center" />

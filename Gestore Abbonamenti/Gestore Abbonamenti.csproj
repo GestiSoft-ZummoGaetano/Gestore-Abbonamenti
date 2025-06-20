@@ -11,9 +11,9 @@
     <GenerateAssemblyInfo>true</GenerateAssemblyInfo>
     <Version>1.1.0</Version>
     <!-- Versione del package / assembly -->
-    <FileVersion>1.1.0.7</FileVersion>
+    <FileVersion>1.1.0.11</FileVersion>
     <!-- Versione del file eseguibile -->
-    <AssemblyVersion>1.1.0.7</AssemblyVersion>
+    <AssemblyVersion>1.1.0.11</AssemblyVersion>
     
   </PropertyGroup>
 

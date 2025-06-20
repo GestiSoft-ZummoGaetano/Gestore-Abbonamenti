@@ -191,20 +191,21 @@ public class AddOrUpdateArchivioViewModel : BaseObservableObject
 
         // Aggiorna le liste visibili
         ListFigli = new ObservableCollection<Figlii>(Genitore.Figli);
-        ListCedole = new ObservableCollection<CedoleMensili>(Genitore?.Figli?
-            .Where(f => f.Nome == ComboFiglio?.Nome)
-            .SelectMany(f => f.CedoleMensili ?? new List<CedoleMensili>()) ?? new List<CedoleMensili>()
-            .OrderBy(c => c.Mese));
+        SelectionChanged();
     }
     void SelectionChanged()
     {
         if (Cedola != null)
             Cedola = new();
 
-        ListCedole = new ObservableCollection<CedoleMensili>(Genitore?.Figli?
+        var cedole = Genitore?.Figli?
             .Where(f => f.Nome == ComboFiglio?.Nome)
-            .SelectMany(f => f.CedoleMensili ?? new List<CedoleMensili>()) ?? new List<CedoleMensili>()
-            .OrderBy(c => c.Mese));
+            .SelectMany(f => f.CedoleMensili)
+            .OrderBy(f => f.DataCedola)
+            ?? Enumerable.Empty<CedoleMensili>();
+
+        ListCedole = new ObservableCollection<CedoleMensili>(cedole);
+
         CalcoloPagamento();
     }
     void Avanti()

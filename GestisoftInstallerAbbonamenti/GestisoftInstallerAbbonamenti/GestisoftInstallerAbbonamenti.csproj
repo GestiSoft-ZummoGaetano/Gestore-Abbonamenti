@@ -14,9 +14,9 @@
     <AssemblyName>GestioneAbbonamenti.exe</AssemblyName>
     <Version>1.1.0</Version>
     <!-- Versione del package / assembly -->
-    <FileVersion>1.1.0.1</FileVersion>
+    <FileVersion>1.1.0.2</FileVersion>
     <!-- Versione del file eseguibile -->
-    <AssemblyVersion>1.1.0.1</AssemblyVersion>
+    <AssemblyVersion>1.1.0.2</AssemblyVersion>
   </PropertyGroup>
 
   <ItemGroup>

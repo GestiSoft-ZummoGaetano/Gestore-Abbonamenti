@@ -15,6 +15,7 @@ public class GenitoriLogic : IGenitoriLogic
         return context.Genitori
             .AsNoTracking()
             .AsSplitQuery()
+            .OrderBy(g => g.Cognome)
             .ToList();
     }
     public Genitori? GetGenitoreById(long id, int anno)

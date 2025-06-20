@@ -159,7 +159,7 @@
                         </StackPanel>
 
                         <StackPanel Orientation="Horizontal" Margin="10,35,0,0" HorizontalAlignment="Left">
-                            <DataGrid Style="{StaticResource CustomDataGridStyle}" Width="790" MaxHeight="208" MinHeight="150"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
+                            <DataGrid Style="{StaticResource CustomDataGridStyle}" Width="790" MaxHeight="200" MinHeight="200"  HorizontalScrollBarVisibility="Auto" VerticalScrollBarVisibility="Auto"
                                     ItemsSource="{Binding ListFigli}" SelectedItem="{Binding RowFiglio}" GridLinesVisibility="All" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                                 <DataGrid.Columns>
                                     <DataGridTemplateColumn  Width="50">
@@ -302,7 +302,7 @@
                         </StackPanel>
 
                         <StackPanel HorizontalAlignment="Left" Margin="0,40,0,0">
-                            <DataGrid Style="{StaticResource CustomDataGridStyle}" Width="750" MinHeight="200"
+                            <DataGrid Style="{StaticResource CustomDataGridStyle}" Width="800" MinHeight="200" MaxHeight="200" VerticalScrollBarVisibility="Auto"
                                   ItemsSource="{Binding ListCedole}" SelectedItem="{Binding RowCedola}" GridLinesVisibility="All" HorizontalContentAlignment="Center" VerticalContentAlignment="Center">
                                 <DataGrid.Columns>
 
